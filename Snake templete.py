@@ -58,7 +58,16 @@ def change(x, y):
 def inside(head):
     """Return True if head inside boundaries."""
     return -200 < head.x < 190 and -200 < head.y < 190
-
+   '''
+    ZA: This function "inside" checks if the snakes head is within both
+    the defined X boundaries (in this case, -200 to +190) and Y boundaries
+    (-200 to +190) based on the variables "head.x" and "head.y" which
+    represent the (x,y) coordinates of the snakes head at any given moment.
+    The 'and' statement allows the function to return 'False' if the head
+    is outside of either of these boundaries. For example, if 'head.x' =
+    200 and 'head.y' = 150, the function will return "False", since it will 
+    result in a check of "False and True", which is "False"
+    '''
 
 def move():
     """Move snake forward one segment."""
@@ -69,6 +78,27 @@ def move():
         square(head.x, head.y, 9, 'red')
         update()
         return
+   '''
+    ZA: First, the variable "head = snake[-1].copy()" essentially takes 
+    the most recent value from the list of vectors "snake", and assigns
+    that to where the head is at that moment. the method ".copy" allows for
+    when trying to move the head forward, instead of overwriting the old 
+    position of the head, it will intorudce a new one. I.e. it copies the
+    value of the coordinate at that time to allow it to be modified without 
+    modifying the original.
+    Second, "head.move(aim)" takes the position vector "head" and moves it 
+    one step in the direction of aim. For example, suppose head is defined as
+    (10,0) and aim is (0,10), then the new head is (10,10).
+    Finally, the if statement 'if not inside(head) or head in snake:' is a
+    check to determine if the player has lost or not by checking if the player
+    is still within the games boundaries (not inside(head)), and also checking 
+    if the head has ran into the body of the snake (head in snake). If either of
+    these are true, then the square on the board that is occupied by the 
+    snake's head (of size 9) is filled with the color red, indicating the player
+    has lost. "update()" allows for a refresh of the screen to register the
+    previous change. Finally, the "Return" ends the move function, no longer
+    allowing the player to move (they lost)
+    ''' 
 
     snake.append(head)
 
