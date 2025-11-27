@@ -46,7 +46,7 @@ aim = vector(0, -10)
 
 
 def change(x, y):
-    """Change snake direction."""
+    """This function is responsible for changing the snake's direction."""
     aim.x = x
 
 """GG This line of code changes the direction of the snake in the horizontal direction, updating the aim vector in the horizontal direction, to the value of x."""
