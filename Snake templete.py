@@ -13,7 +13,6 @@ Exercises
 2. How can you make the snake go around the edges?
 3. How would you move the food?
 4. Change the snake to respond to mouse clicks.
-George smells weird
 """
 
 from random import randrange
