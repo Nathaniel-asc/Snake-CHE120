@@ -37,7 +37,7 @@ food = vector(0, 0)
 
 snake = [vector(10, 0)]
 
-"""GG This line of code assigns the variable name snake, with the vector position (10,0). 
+"""GG This line of code assigns the variable name snake, with the vector position (10,0), this is the starting position of the snake.
 This is within a list, as this piece of code represents the snakes head and thus later the rest of the sankes body will be added to this collection.""" 
 
 aim = vector(0, -10)
@@ -49,11 +49,13 @@ def change(x, y):
     """This function is responsible for changing the snake's direction."""
     aim.x = x
 
-"""GG This line of code changes the direction of the snake in the horizontal direction, updating the aim vector in the horizontal direction, to the value of x."""
+   """GG This line of code changes the direction of the snake in the horizontal direction, updating the aim vector in the horizontal direction, to the value of x. 
+   This allows only the horizontal direction of the snake to be changed, without affecting the vertical direction."""
     
     aim.y = y
 
-"""GG This line of code changes the direction of the snake in the vertical direction, updating the aim vector in the vertical direction, to the value of y."""
+   """GG This line of code changes the direction of the snake in the vertical direction, updating the aim vector in the vertical direction, to the value of y. 
+   This allows only the vertical direction of the snake to be changed, without affecting the horizontal direction."""
 
 def inside(head):
     """Return True if head inside boundaries."""
