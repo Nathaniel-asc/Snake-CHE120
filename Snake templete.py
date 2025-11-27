@@ -49,18 +49,18 @@ def change(x, y):
     """This function is responsible for changing the snake's direction."""
     aim.x = x
 
-   """GG This line of code changes the direction of the snake in the horizontal direction, updating the aim vector in the horizontal direction, to the value of x. 
+    """GG This line of code changes the direction of the snake in the horizontal direction, updating the aim vector in the horizontal direction, to the value of x. 
    This allows only the horizontal direction of the snake to be changed, without affecting the vertical direction."""
     
     aim.y = y
 
-   """GG This line of code changes the direction of the snake in the vertical direction, updating the aim vector in the vertical direction, to the value of y. 
+    """GG This line of code changes the direction of the snake in the vertical direction, updating the aim vector in the vertical direction, to the value of y. 
    This allows only the vertical direction of the snake to be changed, without affecting the horizontal direction."""
 
 def inside(head):
     """Return True if head inside boundaries."""
     return -200 < head.x < 190 and -200 < head.y < 190
-   '''
+    '''
     ZA: This function "inside" checks if the snakes head is within both
     the defined X boundaries (in this case, -200 to +190) and Y boundaries
     (-200 to +190) based on the variables "head.x" and "head.y" which
@@ -80,7 +80,7 @@ def move():
         square(head.x, head.y, 9, 'red')
         update()
         return
-   '''
+    '''
     ZA: First, the variable "head = snake[-1].copy()" essentially takes 
     the most recent value from the list of vectors "snake", and assigns
     that to where the head is at that moment. the method ".copy" allows for
@@ -154,7 +154,7 @@ def move():
     which is what makes the game run.
     '''
 
-
+setup(420, 420, 370, 0)
 '''NA:
 Setup creates a window with size 420 pixles by 420 pixels, with a starting location 370 pixels to the right and 0 pixels down
 from the top left of the display'''
