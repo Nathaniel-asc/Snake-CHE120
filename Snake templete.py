@@ -15,21 +15,45 @@ Exercises
 4. Change the snake to respond to mouse clicks.
 """
 
-from random import randrange
-from turtle import *
+from random import randrange  
 
-from freegames import square, vector
+"""GG This line of code imports the randrange function from the random module. 
+The randrange function is used to generate a random integer from a specified range."""
 
-food = vector(0, 0)
+from turtle import *       
+
+"""GG This line of code brings all all functions, variables and 
+classes defined within the turtle module into the namespace."""
+
+from freegames import square, vector  
+
+"""GG This line of code imports the square and vector functions, from the freegames module. 
+   The square function draws a square on screen, while the vector function creates a two dimensional vector obejct, (x, y), 
+   representing a position through coordinates.""" 
+
+food = vector(0, 0)  
+
+"""GG This line of code assignes the variable name food with a position of (0,0), using the imported vector function to assign the starting spawn point of the first apple. """
+
 snake = [vector(10, 0)]
+
+"""GG This line of code assigns the variable name snake, with the vector position (10,0). 
+This is within a list, as this piece of code represents the snakes head and thus later the rest of the sankes body will be added to this collection.""" 
+
 aim = vector(0, -10)
+
+""" GG this line of code describes the original direction the snake is moving. It assigns the variable aim with the vector (0, -10) or downwards."""
 
 
 def change(x, y):
     """Change snake direction."""
     aim.x = x
+
+"""GG This line of code changes the direction of the snake in the horizontal direction, updating the aim vector in the horizontal direction, to the value of x."""
+    
     aim.y = y
 
+"""GG This line of code changes the direction of the snake in the vertical direction, updating the aim vector in the vertical direction, to the value of y."""
 
 def inside(head):
     """Return True if head inside boundaries."""
