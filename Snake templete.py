@@ -89,13 +89,31 @@ def move():
     ontimer(move, 100)
 
 
-setup(420, 420, 370, 0)
+'''NA:
+Setup creates a window with size 420 pixles by 420 pixels, with a starting location 370 pixels to the right and 0 pixels down
+from the top left of the display'''
 hideturtle()
+'''NA:
+The turtle module usually has a cursor which points to the most recent added visual, hideturtle() removes that cursor '''
 tracer(False)
+'''NA:
+The turtle module usually draws visual elements one at a time, but tracer(False) stops this and makes the entire screen
+update at once'''
 listen()
+'''NA:
+The listen function allows the graphics window to recieve inputs from the users keyboard'''
 onkey(lambda: change(10, 0), 'Right')
 onkey(lambda: change(-10, 0), 'Left')
 onkey(lambda: change(0, 10), 'Up')
 onkey(lambda: change(0, -10), 'Down')
+'''NA:
+The onkey function allows a certain action to happen when keys are pressed.
+In this case, when the user presses a direction key, the change function is called, and changes the direction of
+the snake'''
 move()
 done()
+'''NA:
+Calls the move function to move the snake one segmant'''
+done()
+'''NA:
+Keeps the interactive window open, listening for keyboard events, and the code looping.'''
