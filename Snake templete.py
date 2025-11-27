@@ -103,22 +103,56 @@ def move():
     ''' 
 
     snake.append(head)
-
+    '''KL: Snake.append(head) adds the value of head, which in this case
+    is a copy of the last item in the snake list, to the end of the snake list. 
+    The list snake stores the location of each segment of the snake's body, and when 
+    the player inputs a new direction, this code segment makes the value stored 
+    in head the new head of the snake.
+    '''
     if head == food:
+        '''KL: This if block checks if the head of the snake is curently
+        on a food block. If so, the program prints the current length of the
+        snake and sets the food to a random new location
+        '''
         print('Snake:', len(snake))
         food.x = randrange(-15, 15) * 10
         food.y = randrange(-15, 15) * 10
     else:
+        '''KL: snake.pop(0) removes the first item in the snake list. This is because
+        to simulate the illusion of movement, the snake increases its length by one
+        every time interval, then immediately deletes the tail segment, unless the 
+        snake eats the food, in which case the tail doesn't get deleted, increasing
+        the snake's length by 1. In this case, the snake's head isn't on a piece of food,
+        which is why the snake's length gets decreased by 1, back to its original size
+        '''
         snake.pop(0)
 
     clear()
-
+    '''KL: This line clears the screen, and the following lines of code 
+    redraws the snake.
+    '''
     for body in snake:
         square(body.x, body.y, 9, 'black')
+    '''KL: This for loop runs for every current segment of the snake, which 
+    is represented by every item in the snake list. For every segment, the 
+    program creates a black square of size 9 at the position of each segment. 
+    This displays the snake at its new position.
+    '''
 
     square(food.x, food.y, 9, 'green')
+    '''KL: This code makes a green square of size 9 where the food is currently
+    located. This ensures the food is redrawn every time the move function is called.
+    '''
     update()
+    '''KL: update() manually refreshes the screen and displays it all simultaneously.
+    This makes the animation look smoother.
+    '''
     ontimer(move, 100)
+    '''KL: The ontimer function runs a given function after a certain interval
+    of time. In this case, the ontimer function runs the move method every 
+    100 miliseconds. This is responsible for looping the move method, 
+    which is what makes the game run.
+    '''
 
 
 '''NA:
