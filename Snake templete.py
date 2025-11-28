@@ -177,7 +177,6 @@ The onkey function allows a certain action to happen when keys are pressed.
 In this case, when the user presses a direction key, the change function is called, and changes the direction of
 the snake'''
 move()
-done()
 '''NA:
 Calls the move function to move the snake one segmant'''
 done()
