@@ -316,7 +316,13 @@ def move():
     square(food.x, food.y, 9, food_colour)
     update()
     ontimer(move, delay)
-if (game_start==True):
+if game_start:
+    '''NA: Resets turtle if its already running, as errors would occur if the game was ran before'''
+    try:
+        bye()
+    except:
+        pass
+
     setup(420*map_scale, 420*map_scale, 370, 0)
     hideturtle()
     tracer(False)
@@ -326,6 +332,6 @@ if (game_start==True):
     onkey(lambda: change(0, 10), 'Up')
     onkey(lambda: change(0, -10), 'Down')
     move()
+    music.stop()
     music.play(-1)
-    '''NA: Starts playing the music'''
     done()
