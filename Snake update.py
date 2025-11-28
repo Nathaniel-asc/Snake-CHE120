@@ -87,7 +87,7 @@ def draw_button(text, x, y, width, height, inactive_color, active_color):
     return hovered  # return True if mouse is hovering
 
 #Main Menu Loop
-
+'''NA: Variables which are used in the menu'''
 menu_state = "main"
 running_menu = True
 delay = 100
@@ -324,6 +324,7 @@ if game_start:
         pass
 
     setup(420*map_scale, 420*map_scale, 370, 0)
+    '''NA: Depending on the map size chosen, the map size increases'''
     hideturtle()
     tracer(False)
     listen()
@@ -334,4 +335,5 @@ if game_start:
     move()
     music.stop()
     music.play(-1)
+    '''NA: plays the music'''
     done()
