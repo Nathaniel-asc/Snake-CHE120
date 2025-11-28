@@ -34,43 +34,70 @@ Created on Thu Nov 27 18:31:09 2025
 @author: andre
 """
 
+'''
+ZA: import system
+'''
 import sys
 game_start=False
-#Initialize pygame module
+'''
+ZA: Initialize pygame module
+'''
 pygame.init()
 
-#Screen setup
+'''
+ZA: Establish Screen setup, Window Title
+'''
 WIDTH, HEIGHT = 600, 400
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Main Menu Test")
+pygame.display.set_caption("Snake Game")
 
 
-#Colors
+
+'''
+ZA: Define colours to be used in buttons, titles
+'''
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 BLUE = (50, 50, 255)
 RED = (255, 50, 50)
 GREEN = (0, 128, 0)
 
-#Font
+'''
+ZA: Establish main font
+'''
 font = pygame.font.SysFont(None, 40)
 
-#Game Title
+'''
+ZA: Establish main title font, title, title colour, title size
+'''
 title_font = pygame.font.SysFont(None, 70)
 title_surf = title_font.render("Snake Game", True, WHITE) 
 title_rect = title_surf.get_rect(center =(WIDTH / 2, 60))
 
-#Options Screen Title
+'''
+ZA: Establish option screen title font, title, title colour, title size
+'''
 options_font = pygame.font.SysFont(None, 70)
 options_surf = options_font.render("Game Options", True, WHITE) 
 options_rect = options_surf.get_rect(center =(WIDTH / 2, 60))
 
-#Speed Options Title
+'''
+ZA: Establish speed submenu title font, title, title colour, title size
+'''
 speed_font = pygame.font.SysFont(None, 70)
 speed_surf = speed_font.render("Speed Options", True, WHITE) 
 speed_rect = speed_surf.get_rect(center =(WIDTH / 2, 60))
 
-#Button Function
+'''
+ZA: Establish map size submenu title font, title, title colour, title size
+'''
+map_font = pygame.font.SysFont(None, 70)
+map_surf = map_font.render("Map Size Options", True, WHITE) 
+map_rect = map_surf.get_rect(center =(WIDTH / 2, 60))
+
+'''
+ZA: Define button function to be used for different menu buttons (start, options, quit, etc.)
+'''
 def draw_button(text, x, y, width, height, inactive_color, active_color):
     mouse = pygame.mouse.get_pos()
     hovered = x < mouse[0] < x + width and y < mouse[1] < y + height
@@ -93,6 +120,11 @@ running_menu = True
 delay = 100
 map_scale=1
 
+'''
+ZA: Main menu function including Title, black background, buttons for "Play", "Options", and "Quit", which lead to 1. The game starting, 
+2. Options leads to speed select and map size select
+3. Quit stops the game
+'''
 def main_menu():
     global menu_state,game_start
     while True:
@@ -121,7 +153,9 @@ def main_menu():
                     pygame.quit()
                     sys.exit()
         pygame.display.update()
-        
+'''
+ZA: Options menu with three buttons to go back to main screen, go to speed select, or go to map size select. 
+'''
 def options_menu():
     global menu_state
     while True:
@@ -152,6 +186,9 @@ def options_menu():
                     return
         pygame.display.update()
         
+'''
+ZA: Speed select screen with options for normal, slow, or fast, as well as option to go back to options select screen.
+'''
 def speed_menu():
     global menu_state
     while True:
@@ -188,11 +225,14 @@ def speed_menu():
         
         pygame.display.update()
         
+'''
+ZA: Map size select screen to select small, medium, or large map size, as well as back button to go back to options select menu.
+'''
 def map_menu():
     global menu_state, map_scale
     while True:
         screen.fill(BLACK)
-        screen.blit(speed_surf, speed_rect)
+        screen.blit(map_surf, map_rect)
         
         # Draw buttons
         small_hover = draw_button("Small", 200, 100, 200, 50, BLUE, GREEN)
@@ -221,7 +261,10 @@ def map_menu():
         
         pygame.display.update()
 
-
+'''
+ZA: while loop to determine which menu function should be running based on the assignment of the variable "menu_state", which changes depending on which button is pressed. 
+Once the game is started, running_menu is false and thus the game commences, menu loop ends.
+'''
 while running_menu:
     if menu_state == "main":
         main_menu()
