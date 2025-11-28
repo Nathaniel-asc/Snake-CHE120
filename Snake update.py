@@ -20,7 +20,7 @@ import pygame
 pygame.mixer.init()
 music = pygame.mixer.Sound("Sonic Blaster.mp3")
 apple_munch=pygame.mixer.Sound("Minecraft Eating - Sound Effect HD.mp3")
-music.set_volume(0.05)
+music.set_volume(0.075)
 '''NA: Defines music and sound'''
 
 from random import randrange  
@@ -34,7 +34,6 @@ Created on Thu Nov 27 18:31:09 2025
 @author: andre
 """
 
-import pygame
 import sys
 game_start=False
 #Initialize pygame module
@@ -90,7 +89,8 @@ def draw_button(text, x, y, width, height, inactive_color, active_color):
 #Main Menu Loop
 
 menu_state = "main"
-
+running_menu = True
+delay = 100
 
 def main_menu():
     global menu_state,game_start
@@ -182,7 +182,7 @@ def speed_menu():
                     return delay
                 elif fast_hover:
                     print("Fast clicked")
-                    delay = 50
+                    delay = 75
                     return delay
         
         pygame.display.update()
@@ -218,15 +218,20 @@ def map_menu():
         pygame.display.update()
 
 
-while True:
+while running_menu:
     if menu_state == "main":
         main_menu()
     elif menu_state == "options":
         options_menu()
     elif menu_state == "speed":
-        speed_menu()
+        temp_delay = speed_menu()
+        if temp_delay:
+            delay = temp_delay
     elif menu_state == "map_size":
         map_menu()
+
+    if game_start:
+        running_menu = False
 
 food = vector(0, 0)  
 
@@ -290,7 +295,7 @@ def move():
         '''KL: Sets the colour of the snake to the old food colour, and randomizes the current colour of the food.
         '''
         
-        delay = max(10, delay - 12)
+        delay = max(20, delay - 5)
         """ GG Everytime an apple is eaten, the delay is decreased by 12ms. 
         This is within a max function, making the maximum delay 10ms."""
     else:
