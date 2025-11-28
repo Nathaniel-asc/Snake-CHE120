@@ -16,7 +16,7 @@ Exercises
 """
 import pygame
 '''NA: imports pygame, used for sound design'''
-#hello
+
 pygame.mixer.init()
 music = pygame.mixer.Sound("Sonic Blaster.mp3")
 apple_munch=pygame.mixer.Sound("Minecraft Eating - Sound Effect HD.mp3")
