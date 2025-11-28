@@ -36,7 +36,7 @@ Created on Thu Nov 27 18:31:09 2025
 
 import pygame
 import sys
-   
+game_start=False
 #Initialize pygame module
 pygame.init()
 
@@ -91,8 +91,9 @@ def draw_button(text, x, y, width, height, inactive_color, active_color):
 
 menu_state = "main"
 
+
 def main_menu():
-    global menu_state
+    global menu_state,game_start
     while True:
         screen.fill(BLACK)
         screen.blit(title_surf, title_rect)
@@ -109,7 +110,9 @@ def main_menu():
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if play_hover:
+                    game_start=True
                     print("Play clicked")  # Call your game function here
+                    return 
                 elif options_hover:
                     menu_state = "options"
                     return  # exit main_menu to switch to options
@@ -288,16 +291,16 @@ def move():
     square(food.x, food.y, 9, 'green')
     update()
     ontimer(move, delay)
-
-setup(420, 420, 370, 0)
-hideturtle()
-tracer(False)
-listen()
-onkey(lambda: change(10, 0), 'Right')
-onkey(lambda: change(-10, 0), 'Left')
-onkey(lambda: change(0, 10), 'Up')
-onkey(lambda: change(0, -10), 'Down')
-move()
-music.play()
-'''NA: Starts playing the music'''
-done()
+if (game_start==True):
+    setup(420, 420, 370, 0)
+    hideturtle()
+    tracer(False)
+    listen()
+    onkey(lambda: change(10, 0), 'Right')
+    onkey(lambda: change(-10, 0), 'Left')
+    onkey(lambda: change(0, 10), 'Up')
+    onkey(lambda: change(0, -10), 'Down')
+    move()
+    music.play(-1)
+    '''NA: Starts playing the music'''
+    done()
