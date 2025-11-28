@@ -20,8 +20,7 @@ import pygame
 pygame.mixer.init()
 music = pygame.mixer.Sound("Sonic Blaster.mp3")
 apple_munch=pygame.mixer.Sound("Minecraft Eating - Sound Effect HD.mp3")
-music.set_volume(0.3)
-music.stop()
+music.set_volume(0.05)
 '''NA: Defines music and sound'''
 
 from random import randrange  
@@ -56,6 +55,9 @@ aim = vector(0, -10)
 
 def change(x, y):
     """This function is responsible for changing the snake's direction."""
+    if (aim.x == -x and aim.y == -y):
+        return
+    '''NA: Stops the snake from reversing direction, instantly killing itself if the snake is longer then 1'''
     aim.x = x
 
     """GG This line of code changes the direction of the snake in the horizontal direction, updating the aim vector in the horizontal direction, to the value of x. 
@@ -65,6 +67,7 @@ def change(x, y):
 
     """GG This line of code changes the direction of the snake in the vertical direction, updating the aim vector in the vertical direction, to the value of y. 
    This allows only the vertical direction of the snake to be changed, without affecting the horizontal direction."""
+   
 
 def inside(head):
     """Return True if head inside boundaries."""
