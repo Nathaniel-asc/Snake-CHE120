@@ -20,8 +20,9 @@ import pygame
 pygame.mixer.init()
 music = pygame.mixer.Sound("Sonic Blaster.mp3")
 apple_munch=pygame.mixer.Sound("Minecraft Eating - Sound Effect HD.mp3")
-music.play(loops=-1)
-'''NA: Defines music and sound, and starts playing the music '''
+music.set_volume(0.3)
+music.stop()
+'''NA: Defines music and sound'''
 
 from random import randrange  
 
@@ -87,6 +88,7 @@ def move():
     if not inside(head) or head in snake:
         square(head.x, head.y, 9, 'red')
         update()
+        music.stop()
         return
     '''
     ZA: First, the variable "head = snake[-1].copy()" essentially takes 
@@ -123,6 +125,8 @@ def move():
         snake and sets the food to a random new location
         '''
         print('Snake:', len(snake))
+        apple_munch.play()
+        '''NA: plays munch sound if player touches apple'''
         food.x = randrange(-15, 15) * 10
         food.y = randrange(-15, 15) * 10
     else:
@@ -185,9 +189,9 @@ The onkey function allows a certain action to happen when keys are pressed.
 In this case, when the user presses a direction key, the change function is called, and changes the direction of
 the snake'''
 move()
-done()
 '''NA:
 Calls the move function to move the snake one segmant'''
+music.play()
 done()
 '''NA:
 Keeps the interactive window open, listening for keyboard events, and the code looping.'''
