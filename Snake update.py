@@ -227,11 +227,15 @@ while True:
 
 food = vector(0, 0)  
 
-
 snake = [vector(10, 0)]
 
-
 aim = vector(0, -10)
+
+colour_list = ['red','orange','yellow','green','blue','indigo','violet','pink','cyan','black']
+snake_colour = 'black'
+food_colour = 'red'
+'''KL: These variables and the list will be used later to randomize the colour of the food and snake.
+'''
 
 def change(x, y):
     """This function is responsible for changing the snake's direction."""
@@ -239,11 +243,7 @@ def change(x, y):
         return
     '''NA: Stops the snake from reversing direction, instantly killing itself if the snake is longer then 1'''
     aim.x = x
-
-   
     aim.y = y
-
-    
 
 def inside(head):
     """Return True if head inside boundaries."""
@@ -256,7 +256,13 @@ def move():
     
     """ GG Delay is defined outside the function, 
     global allows the delay value to be changed, within the move function."""
-    
+
+    global snake_colour
+    global food_colour
+    '''KL: snake_colour and food_colour are defined outside the function, so the global keyword tells
+    the program to use the variables outside the function instead of creating new ones.
+    '''
+   
     head = snake[-1].copy()
     head.move(aim)
 
@@ -275,6 +281,11 @@ def move():
         '''NA: plays munch sound if player touches apple'''
         food.x = randrange(-15, 15) * 10
         food.y = randrange(-15, 15) * 10
+
+        snake_colour = food_colour
+        food_colour = colour_list[randrange(10)]
+        '''KL: Sets the colour of the snake to the old food colour, and randomizes the current colour of the food.
+        '''
         
         delay = max(10, delay - 12)
         """ GG Everytime an apple is eaten, the delay is decreased by 12ms. 
@@ -284,8 +295,8 @@ def move():
 
     clear()
     for body in snake:
-        square(body.x, body.y, 9, 'black')
-    square(food.x, food.y, 9, 'green')
+        square(body.x, body.y, 9, snake_colour)
+    square(food.x, food.y, 9, food_colour)
     update()
     ontimer(move, delay)
 
