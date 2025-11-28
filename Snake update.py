@@ -35,7 +35,9 @@ snake = [vector(10, 0)]
 
 aim = vector(0, -10)
 
+delay = 100 
 
+""" GG Defines the starting delay as 100ms"""
 
 def change(x, y):
     """This function is responsible for changing the snake's direction."""
@@ -55,6 +57,12 @@ def inside(head):
     
 def move():
     """Move snake forward one segment."""
+
+    global delay
+    
+    """ GG Delay is defined outside the function, 
+    global allows the delay value to be changed, within the move function."""
+    
     head = snake[-1].copy()
     head.move(aim)
 
@@ -73,6 +81,10 @@ def move():
         '''NA: plays munch sound if player touches apple'''
         food.x = randrange(-15, 15) * 10
         food.y = randrange(-15, 15) * 10
+        
+        delay = max(10, delay - 12)
+        """ GG Everytime an apple is eaten, the delay is decreased by 12ms. 
+        This is within a max function, making the maximum delay 10ms."""
     else:
         snake.pop(0)
 
@@ -81,7 +93,7 @@ def move():
         square(body.x, body.y, 9, 'black')
     square(food.x, food.y, 9, 'green')
     update()
-    ontimer(move, 100)
+    ontimer(move, delay)
 
 setup(420, 420, 370, 0)
 hideturtle()
