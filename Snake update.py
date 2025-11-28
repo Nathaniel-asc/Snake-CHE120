@@ -91,6 +91,7 @@ def draw_button(text, x, y, width, height, inactive_color, active_color):
 menu_state = "main"
 running_menu = True
 delay = 100
+map_scale=1
 
 def main_menu():
     global menu_state,game_start
@@ -188,7 +189,7 @@ def speed_menu():
         pygame.display.update()
         
 def map_menu():
-    global menu_state
+    global menu_state, map_scale
     while True:
         screen.fill(BLACK)
         screen.blit(speed_surf, speed_rect)
@@ -210,10 +211,13 @@ def map_menu():
                     return  # go back to options menu
                 elif small_hover:
                     print("Small clicked")
+                    map_scale=1
                 elif medium_hover:
                     print("Medium_map clicked")
+                    map_scale=1.5
                 elif large_hover:
                     print("Large clicked")
+                    map_scale=2
         
         pygame.display.update()
 
@@ -255,7 +259,12 @@ def change(x, y):
 
 def inside(head):
     """Return True if head inside boundaries."""
-    return -200 < head.x < 190 and -200 < head.y < 190
+    if (map_scale==1):
+        return -210 < head.x < 190 and -200 < head.y < 200
+    if (map_scale==1.5):
+        return -315 < head.x < 285 and -300 < head.y < 300
+    if (map_scale==2):
+        return -410 < head.x < 390 and -400 < head.y < 400
     
 def move():
     """Move snake forward one segment."""
@@ -308,7 +317,7 @@ def move():
     update()
     ontimer(move, delay)
 if (game_start==True):
-    setup(420, 420, 370, 0)
+    setup(420*map_scale, 420*map_scale, 370, 0)
     hideturtle()
     tracer(False)
     listen()
