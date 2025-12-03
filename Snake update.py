@@ -53,6 +53,7 @@ pygame.display.set_caption("Snake Game")
 
 
 
+
 '''
 ZA: Define colours to be used in buttons, titles
 '''
@@ -258,7 +259,7 @@ def map_menu():
                 elif large_hover:
                     print("Large clicked")
                     map_scale=2
-        
+                    '''NA: Changes map_scale function based on size of map clicked'''
         pygame.display.update()
 
 '''
