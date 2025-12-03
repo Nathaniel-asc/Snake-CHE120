@@ -1,4 +1,9 @@
-# -*- coding: utf-8 -*-
+#Github user name: Nathaniel-asc
+
+#Nathaniel Ascenzi, NA.
+#Zachary Andrews, ZA.
+#George Gall, GG.
+#Konrad,
 """
 Created on Thu Nov 27 17:07:03 2025
 
