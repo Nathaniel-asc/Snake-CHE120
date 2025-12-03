@@ -3,7 +3,7 @@
 #Nathaniel Ascenzi, NA.
 #Zachary Andrews, ZA.
 #George Gall, GG.
-#Konrad,
+#Konrad Li, KL.
 """
 Created on Thu Nov 27 17:07:03 2025
 
